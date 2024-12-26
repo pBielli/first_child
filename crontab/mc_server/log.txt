@@ -1,9 +1,0 @@
-2024-12-26 12:00:01 [INFO] Inizio esecuzione script.
-2024-12-26 12:00:01 [INFO] Esecuzione dello script swapper nel container: minecraft-server
- 2024-12-26 11:00:01 [INFO] Nessuna icona successiva trovata. Resettata a: 0.
- 2024-12-26 11:00:01 [INFO] MOTD aggiornato a: §cBLOODY MARY§7 - Cremonini ti odio.
-2024-12-26 12:00:01 [SUCCESSO] Script swapper eseguito correttamente.
-2024-12-26 12:00:01 [INFO] Tentativo di riavvio del container: minecraft-server
-minecraft-server
-2024-12-26 12:00:13 [SUCCESSO] Container minecraft-server riavviato con successo.
-2024-12-26 12:00:13 [INFO] Fine esecuzione script.\n

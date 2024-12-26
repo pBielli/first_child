@@ -24,8 +24,5 @@
 
 0 12 * * * /home/pat/first_child/crontab/duckdns/update-duckdns.sh >> /home/pat/first_child/crontab/duckdns/duckdns.log
 
-0 12 * * * /home/pat/first_child/crontab/mc_server/restart.sh >>  /home/pat/first_child/crontab/mc_server/log.txt
-0 0 * * *  /home/pat/first_child/crontab/mc_server/restart.sh >>  /home/pat/first_child/crontab/mc_server/log.txt
-
-
-
+0 12 * * * /home/pat/first_child/crontab/mc_server/restart.sh >>  /home/pat/first_child/crontab/mc_server/mc_server.log
+0 0 * * *  /home/pat/first_child/crontab/mc_server/restart.sh >>  /home/pat/first_child/crontab/mc_server/mc_server.log

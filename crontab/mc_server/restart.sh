@@ -23,7 +23,7 @@ restart_container() {
 CONTAINER_NAME="minecraft-server"
 
 # Log iniziale
-echo "$(date '+%Y-%m-%d %H:%M:%S') [INFO] Inizio esecuzione script."
+echo "\n$(date '+%Y-%m-%d %H:%M:%S') [INFO] Inizio esecuzione script."
 
 # Esegui lo script swapper all'interno del container
 echo "$(date '+%Y-%m-%d %H:%M:%S') [INFO] Esecuzione dello script swapper nel container: $CONTAINER_NAME"
