@@ -1,2 +1,5 @@
 crontab/mc_server/mc_server.log
-crontab/duckdns/duckdns.log
+crontab/ddns/ddns.log
+crontab/ddns/configs.sh
+
+
