@@ -15,21 +15,14 @@ updateDuckDDNS() {
 
   # Aggiorna DuckDNS
   RESPONSE=$(curl -s "$UPDATE_URL")
-
   # Log per il controllo
   if [ "$RESPONSE" = "OK" ]; then
-    echo "$(date) - DuckDNS ($domain) aggiornato con successo." >> ~/duckdns.log
+    echo "$(date) - DuckDNS ($domain) aggiornato con successo."
   else
-    echo "$(date) - Errore nell'aggiornamento di DuckDNS ($domain): $RESPONSE" >> ~/duckdns.log
+    echo "$(date) - Errore nell'aggiornamento di DuckDNS ($domain): $RESPONSE"
   fi
 }
 
 # Aggiorna i domini configurati
 updateDuckDDNS "$DOMAIN" "$TOKEN"
 updateDuckDDNS "$VPN_DOMAIN" "$TOKEN"
-
-# Mantieni il file di log sotto 1 MB
-if [ $(stat -c%s ~/duckdns.log) -gt 1048576 ]; then
-  > ~/duckdns.log
-fi
-

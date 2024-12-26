@@ -1,31 +1,40 @@
-
 #!/bin/bash
 
-# Funzione per riavviare un container e loggare l'output con timestamp
-restart_and_log() {
+# Funzione per riavviare un container con messaggi migliorati
+restart_container() {
     local container_name="$1"
-    local log_file="$2"
 
-    if [[ -z "$container_name" || -z "$log_file" ]]; then
-        echo "Uso: restart_and_log <nome_container> <file_di_log>"
+    if [[ -z "$container_name" ]]; then
+        echo "$(date '+%Y-%m-%d %H:%M:%S') [ERRORE] Nome del container non fornito."
         return 1
     fi
 
-    # Esegui il comando docker e aggiungi timestamp all'output
-    docker restart "$container_name" 2>&1 | while read -r line; do
-        echo "$(date '+%Y-%m-%d %H:%M:%S') [$container_name] $line" >> "$log_file"
-    done
+    echo "$(date '+%Y-%m-%d %H:%M:%S') [INFO] Tentativo di riavvio del container: $container_name"
+
+    # Riavvia il container e gestisci l'output
+    if docker restart "$container_name" 2>&1; then
+        echo "$(date '+%Y-%m-%d %H:%M:%S') [SUCCESSO] Container $container_name riavviato con successo."
+    else
+        echo "$(date '+%Y-%m-%d %H:%M:%S') [ERRORE] Riavvio del container $container_name fallito."
+    fi
 }
 
-# Parametri dello script
-LOG_FILE="/home/pat/paperServer/crontab/docker/mc_server/log.txt"
+# Nome del container
 CONTAINER_NAME="minecraft-server"
 
-echo "$(date '+%Y-%m-%d %H:%M:%S') SWAP IMMAGINI"
-docker exec "$CONTAINER_NAME" bash /app/PAT/scripts/icoNmotd_swapper/swapper.sh >> "$LOG_FILE"
+# Log iniziale
+echo "$(date '+%Y-%m-%d %H:%M:%S') [INFO] Inizio esecuzione script."
 
-echo "$(date '+%Y-%m-%d %H:%M:%S') RIAVVIO CONTAINER $CONTAINER_NAME"
+# Esegui lo script swapper all'interno del container
+echo "$(date '+%Y-%m-%d %H:%M:%S') [INFO] Esecuzione dello script swapper nel container: $CONTAINER_NAME"
+if docker exec "$CONTAINER_NAME" bash /app/PAT/scripts/icoNmotd_swapper/swapper.sh 2>&1; then
+    echo "$(date '+%Y-%m-%d %H:%M:%S') [SUCCESSO] Script swapper eseguito correttamente."
+else
+    echo "$(date '+%Y-%m-%d %H:%M:%S') [ERRORE] Esecuzione dello script swapper fallita."
+fi
 
-# Chiamata alla funzione
-restart_and_log "$CONTAINER_NAME" "$LOG_FILE"
-echo "(date '+%Y-%m-%d %H:%M:%S') FINE\n"
+# Riavvia il container
+restart_container "$CONTAINER_NAME"
+
+# Log finale
+echo "$(date '+%Y-%m-%d %H:%M:%S') [INFO] Fine esecuzione script.\n"

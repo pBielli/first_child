@@ -1,20 +1,30 @@
+
+2024-12-26 11:27:31 [INFO] Inizio esecuzione script.
+2024-12-26 11:27:31 [INFO] Esecuzione dello script swapper nel container: minecraft-server
+/app/PAT/scripts/icoNmotd_swapper/swapper.sh: line 29: 2024-12-21 02:39:45 - [2: syntax error in expression (error token is "02:39:45 - [2")
+/app/PAT/scripts/icoNmotd_swapper/swapper.sh: line 54: [: 2024-12-21 02:39:45 - [6: integer expression expected
+/app/PAT/scripts/icoNmotd_swapper/swapper.sh: line 57: 2024-12-21 02:39:45 - [6: syntax error in expression (error token is "02:39:45 - [6")
+2024-12-26 11:27:31 [ERRORE] Esecuzione dello script swapper fallita.
+2024-12-26 11:27:31 [INFO] Tentativo di riavvio del container: minecraft-server
 minecraft-server
+2024-12-26 11:27:42 [SUCCESSO] Container minecraft-server riavviato con successo.
+2024-12-26 11:27:42 [INFO] Fine esecuzione script.\n
+2024-12-26 11:33:15 [INFO] Inizio esecuzione script.
+2024-12-26 11:33:15 [INFO] Esecuzione dello script swapper nel container: minecraft-server
+/app/PAT/scripts/icoNmotd_swapper/swapper.sh: line 28: 2024-12-21 02:39:45 - [2: syntax error in expression (error token is "02:39:45 - [2")
+/app/PAT/scripts/icoNmotd_swapper/swapper.sh: line 50: [: 2024-12-21 02:39:45 - [6: integer expression expected
+/app/PAT/scripts/icoNmotd_swapper/swapper.sh: line 53: 2024-12-21 02:39:45 - [6: syntax error in expression (error token is "02:39:45 - [6")
+2024-12-26 11:33:16 [ERRORE] Esecuzione dello script swapper fallita.
+2024-12-26 11:33:16 [INFO] Tentativo di riavvio del container: minecraft-server
 minecraft-server
+2024-12-26 11:33:27 [SUCCESSO] Container minecraft-server riavviato con successo.
+2024-12-26 11:33:27 [INFO] Fine esecuzione script.\n
+2024-12-26 11:47:52 [INFO] Inizio esecuzione script.
+2024-12-26 11:47:52 [INFO] Esecuzione dello script swapper nel container: minecraft-server
+ 2024-12-26 10:47:53 [INFO] Icona aggiornata a: 3.
+ 2024-12-26 10:47:53 [INFO] MOTD aggiornato a: §cBLOODY MARY§7 - Tog fai basta! cazzo... intrattabile.
+2024-12-26 11:47:53 [SUCCESSO] Script swapper eseguito correttamente.
+2024-12-26 11:47:53 [INFO] Tentativo di riavvio del container: minecraft-server
 minecraft-server
-nextico ? /app/PAT/scripts/icoNmotd_swapper/configs/icons/3.png
-SELECTED_ICO_FILE:3
-next_motd_line:3
-2024-12-18 23:49:49 [minecraft-server] minecraft-server
-nextico ? /app/PAT/scripts/icoNmotd_swapper/configs/icons/4.png
-SELECTED_ICO_FILE:0
-next_motd_line:4
-2024-12-20 00:24:57 [minecraft-server] minecraft-server
-SELECTED_ICO_FILE:2024-12-20 08:12:09 - [1
-next_motd_line:5
-2024-12-20 09:12:21 [minecraft-server] minecraft-server
-2024-12-20 09:13:30 [minecraft-server] minecraft-server
-2024-12-20 09:15:34 [minecraft-server] minecraft-server
-2024-12-21 03:04:15 [minecraft-server] minecraft-server
-SELECTED_ICO_FILE:2024-12-21 02:39:45 - [2
-next_motd_line:6
-2024-12-21 03:39:57 [minecraft-server] minecraft-server
+2024-12-26 11:48:04 [SUCCESSO] Container minecraft-server riavviato con successo.
+2024-12-26 11:48:04 [INFO] Fine esecuzione script.\n
