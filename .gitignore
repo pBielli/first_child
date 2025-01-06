@@ -1,0 +1,12 @@
+crontab/mc_server/mc_server.log
+crontab/ddns/ddns.log
+crontab/ddns/configs.sh
+Docker/nginx/conf.d/*
+Docker/paperServer_latest/files/
+Docker/paperServer_latest/files/*
+Docker/paperServer_latest/paper.jar
+Docker/paperServer/paper.jar
+backups/minecraft/*
+backups/minecraft/
+
+
