@@ -1,40 +1,37 @@
-# Usa l'immagine di base di Ubuntu 22.04
-FROM ubuntu:22.04
+# Usa una versione stabile di Node.js basata su Debian Bullseye
+FROM node:23.6-bullseye
 
-# Aggiungi il repository NodeSource per la versione LTS di Node.js (es. 18.x)
-RUN apt-get update && apt-get install -y \
-    curl \
+# Aggiorna i pacchetti e installa le dipendenze necessarie (SSH, FTP)
+RUN apt-get update && \
+    apt-get install -y \
     openssh-server \
     vsftpd \
-    sudo \
-    net-tools \
-    iputils-ping \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get clean
 
-# Configura il server SSH
-RUN mkdir /var/run/sshd && echo 'root:rootpassword' | chpasswd && sed -i 's/.*PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+# Crea la cartella per SSH
+RUN mkdir /var/run/sshd
 
-# Configura il server FTP
-RUN echo -e 'listen=YES\nlocal_enable=YES\nwrite_enable=YES\nchroot_local_user=YES' > /etc/vsftpd.conf
+# Configura SSH
+RUN echo 'root:password' | chpasswd
 
-# Imposta la directory di lavoro per il progetto Node.js
+# Configura FTP
+RUN echo "anonymous_enable=YES" >> /etc/vsftpd.conf && \
+    echo "local_enable=YES" >> /etc/vsftpd.conf && \
+    echo "write_enable=YES" >> /etc/vsftpd.conf && \
+    echo "anon_upload_enable=YES" >> /etc/vsftpd.conf && \
+    echo "anon_mkdir_write_enable=YES" >> /etc/vsftpd.conf
+
+# Esponi le porte necessarie
+EXPOSE 22 21 80 443 3100-3200
+
+# Imposta la directory di lavoro per Node.js
 WORKDIR /app
 
-# Copia i file dell'app Node.js nel container
-COPY . /app
+# Copia i file del progetto (se esistono)
+# COPY . /app
 
-# Installa le dipendenze di Node.js
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - \
-    && apt-get install nodejs -y
-RUN npm install -y
-# Espone le porte necessarie
-EXPOSE 3000-3010  
-# Intervallo di porte per il server Node.js
-EXPOSE 21         
-# Porta per FTP
-EXPOSE 22         
-# Porta per SSH
+# Installa le dipendenze Node.js (se hai un package.json)
+# RUN npm install
 
-# Avvia SSH, FTP e il server Node.js
-CMD service ssh start && service vsftpd start && node /app/server.js
+# Comando di avvio: avvia sia SSH che FTP e quindi il server Node.js
+CMD service ssh start && service vsftpd start && node server.js
